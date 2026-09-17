@@ -1,0 +1,23 @@
+spring:
+    application:
+        name: Produto
+    datasource:
+        url: jdbc:h2:mem:produtodb
+        driver-class-name: org.h2.Driver
+        username: sa
+        password:
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+    h2:
+        console:
+            enabled: true
+    rabbitmq:
+        host: capybara.lmq.cloudamqp.com
+        port: 5671
+        username: dvwopfyx
+        password: F50uHXvtBN0yPPd1DD72SqumFUX-Pe4K
+        virtual-host: dvwopfyx
+        ssl:
+            enabled: true
