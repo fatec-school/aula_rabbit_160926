@@ -1,5 +1,6 @@
 package com.nickolss.Produto.service;
 
+import com.nickolss.Produto.controller.dto.SellResponse;
 import com.nickolss.Produto.entity.Product;
 import com.nickolss.Produto.event.ProductEvent;
 import com.nickolss.Produto.repository.ProductRepository;
@@ -20,22 +21,26 @@ public class ProductService {
     }
 
     public List<Product> findAll() {
-        productEvent.send("ProductService: findAll called");
+        SellResponse message = new SellResponse(0L, 0, "ProductService: findAll called");
+        productEvent.send(message);
         return productRepository.findAll();
     }
 
     public Optional<Product> findById(Long id) {
-        productEvent.send("ProductService: findById called with id: " + id);
+        SellResponse message = new SellResponse(id, 0, "ProductService: findById called with id: " + id);
+        productEvent.send(message);
         return productRepository.findById(id);
     }
 
     public Product save(Product product) {
-        productEvent.send("ProductService: save called with product: " + product);
+        SellResponse message = new SellResponse(product.getId(), 0, "Product saved successfully");
+        productEvent.send(message);
         return productRepository.save(product);
     }
 
     public Optional<Product> update(Long id, Product product) {
-        productEvent.send("ProductService: update called with id: " + id + " and product: " + product);
+        SellResponse message = new SellResponse(id, 0, "Product updated successfully");
+        productEvent.send(message);
         return productRepository.findById(id)
                 .map(existingProduct -> {
                     existingProduct.setName(product.getName());
@@ -50,7 +55,8 @@ public class ProductService {
     }
 
     public boolean deleteById(Long id) {
-        productEvent.send("ProductService: deleteById called with id: " + id);
+        SellResponse message = new SellResponse(id, 0, "Product deleted successfully");
+        productEvent.send(message);
         if (!productRepository.existsById(id)) {
             return false;
         }
