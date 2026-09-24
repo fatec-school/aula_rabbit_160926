@@ -21,7 +21,7 @@ public class ProdutoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		SellResponse message = new SellResponse(1L, 10, "Product sold successfully");
+		SellResponse message = new SellResponse(1L, 10, "Product sold successfully 2");
 		event.send(message);
 		System.out.println("FOI ESSA PORRA");
 	}
