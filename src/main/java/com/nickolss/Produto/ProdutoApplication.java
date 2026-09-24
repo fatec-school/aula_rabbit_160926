@@ -4,6 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.nickolss.Produto.controller.dto.SellResponse;
 import com.nickolss.Produto.event.ProductEvent;
 
 @SpringBootApplication
@@ -20,7 +21,8 @@ public class ProdutoApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		event.send("TESTE");
+		SellResponse message = new SellResponse(1L, 10, "Product sold successfully");
+		event.send(message);
 		System.out.println("FOI ESSA PORRA");
 	}
 
